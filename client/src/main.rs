@@ -14,18 +14,21 @@ fn main() -> std::io::Result<()> {
             Ok(_) => {
                 let command = from_utf8(&data).unwrap();
                 println!("{}",command);
-                match stream.write(command.as_bytes()){
-                    Ok(_)=>{},
-                    Err(_)=>{return Ok(());}// con esto ya termina la conexion en el caso de que se haya cerrado la conexion
-                };
-                let output = Command::new("cmd")
+                
+                stream.write(command.as_bytes()).unwrap();
+                stream.flush().unwrap();
+                //match stream.write(command.as_bytes()){
+                //    Ok(_)=>{},
+                //    Err(_)=>{return Ok(());}// con esto ya termina la conexion en el caso de que se haya cerrado la conexion
+                //};
+            /*let output = Command::new("cmd")
                                     .arg("command")
                                     .output()
                                     .expect("failed to execute process");
 
                             println!("status: {}", output.status);
                             println!("stdout: {}", String::from_utf8_lossy(&output.stdout));
-                            println!("stderr: {}", String::from_utf8_lossy(&output.stderr));
+                            println!("stderr: {}", String::from_utf8_lossy(&output.stderr));*/
                 
                 ()
             }

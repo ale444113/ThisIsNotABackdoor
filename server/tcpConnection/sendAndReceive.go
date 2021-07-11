@@ -19,7 +19,7 @@ func handleConnection(conn net.Conn) {
 			return
 		}
 		//echo it back
-		fmt.Printf("output from the client:%s\n>", line)
+		fmt.Printf("output from the client:%s\n> ", line)
 
 	}
 }
@@ -31,5 +31,6 @@ func sendCommands(conn net.Conn) {
 		scanner.Scan() // use `for scanner.Scan()` to keep reading
 		command := scanner.Text()
 		conn.Write([]byte(command))
+
 	}
 }
