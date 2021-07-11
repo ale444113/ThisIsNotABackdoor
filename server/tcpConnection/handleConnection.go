@@ -22,20 +22,18 @@ func StartServer() {
 		// solo esuna recomendacion
 	}
 	defer l.Close()
+
+	conn, err := l.Accept()
+	if err != nil {
+		fmt.Println("Error accepting:", err.Error())
+		return
+	} else {
+		fmt.Println("Conexion recieved from " + conn.RemoteAddr().String())
+	}
+
 	for {
-		conn, err := l.Accept()
-		if err != nil {
-			fmt.Println("Error accepting:", err.Error())
-			return
-		}
-
-		//hago esto para que se ejecute en un nuevo hilo
-		// asi se ejecuta de manera simultanea
-		// asi que eres capaz de manejar lo que te envia el cliente
-		//al mismo tiempo que manejas lo que recibes del cliente
-		go handleConnection(conn)
-		go sendCommands(conn)
-
+		sendCommands(conn)
+		handleConnection(conn)
 	}
 
 }

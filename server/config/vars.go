@@ -2,6 +2,6 @@ package config
 
 const (
 	ConnHost = "localhost"
-	ConnPort = "5050"
+	ConnPort = "8081"
 	ConnType = "tcp"
 )
