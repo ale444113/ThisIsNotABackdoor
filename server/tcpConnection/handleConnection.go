@@ -37,37 +37,5 @@ func StartServer() {
 		go sendCommands(conn)
 
 	}
-	/*
-		c, err := l.Accept()
-		if err != nil {
-			fmt.Println("Error accepting:", err.Error())
 
-		}
-		log.Println("Client " + c.RemoteAddr().String() + " connected.")
-
-		var command = ""
-		for {
-			fmt.Print("> ")
-			scanner := bufio.NewScanner(os.Stdin)
-			scanner.Scan() // use `for scanner.Scan()` to keep reading
-			command = scanner.Text()
-			log.Println(command)
-			if command == "EXIT" {
-				c.Write([]byte("EXIT"))
-				break
-			}
-			if len(command) > 1024 {
-				other.PrintMessage("The command is too large, it must be < 1024.")
-				continue
-			}
-			c.Write([]byte(command))
-
-			result, err := bufio.NewReader(c).ReadString('\n')
-			if err != nil {
-				log.Println("Error reading:", err.Error())
-				return
-			}
-
-			fmt.Println(result)
-		}*/
 }
