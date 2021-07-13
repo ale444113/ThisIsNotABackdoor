@@ -3,7 +3,6 @@ package tcpConnection
 import (
 	"fmt"
 	"net"
-	"os"
 
 	"github.com/bruh-boys/definitly-not-a-backdoor/config"
 	"github.com/bruh-boys/definitly-not-a-backdoor/other"
@@ -16,10 +15,7 @@ func StartServer() {
 	l, err := net.Listen(config.ConnType, config.ConnHost+":"+config.ConnPort)
 	if err != nil {
 		fmt.Println("Error listening:", err.Error())
-		os.Exit(1) // los os.Exit hay que evitarlos lo mas posible
-		// si estas manejando un servidor tcp o lo que sea no es buena idea
-		// hacer eso ya que en general suele haber muchos errores al menejar las conexiones y eso
-		// solo esuna recomendacion
+		return
 	}
 	defer l.Close()
 
