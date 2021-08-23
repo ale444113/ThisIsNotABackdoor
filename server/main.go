@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/bruh-boys/definitly-not-a-backdoor/tcpConnection"
+	"github.com/ale444113/ThisIsNotABackdoor/tcpConnection"
 )
 
 func main() {
