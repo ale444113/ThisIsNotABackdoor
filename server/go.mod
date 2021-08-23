@@ -1,3 +1,3 @@
-module github.com/ale444113/ThisIsNotABackdoor
+module github.com/bruh-boys/definitly-not-a-backdoor
 
 go 1.15
